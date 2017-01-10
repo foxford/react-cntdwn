@@ -31,13 +31,13 @@ export default class Countdown extends Component {
   }
 
   calculateRemainingTime() {
-    let now = this.props.currentDate || moment().toDate();
+    let now = moment().toDate();
     return moment(this.props.targetDate).diff(moment(now));
   }
 
   addLeadingZero(value) {
     if (value.length < 2) {
-      return '0'+value 
+      return '0'+value
     }
     return value
   }
@@ -59,14 +59,14 @@ export default class Countdown extends Component {
   renderRemainingTime() {
     let time = milliSec(this.state.remainingTime);
     let html = [];
-    
+
     let timeSeparator;
     if (this.props.timeSeparator) {
-      timeSeparator = this.props.timeSeparator 
+      timeSeparator = this.props.timeSeparator
     } else {
       timeSeparator = '&nbsp;'
     }
-    
+
 
     if (this.props.format.day) {
       let days = time.format(this.props.format.day)
@@ -132,7 +132,6 @@ export default class Countdown extends Component {
 }
 
 Countdown.propTypes = {
-  currentDate: PropTypes.instanceOf(Date),
   targetDate: PropTypes.instanceOf(Date).isRequired,
   interval: PropTypes.number,
   startDelay: PropTypes.number,
