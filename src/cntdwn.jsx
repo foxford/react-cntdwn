@@ -29,6 +29,7 @@ export default class Countdown extends Component {
 
   componentWillUnmount() {
     clearInterval(this.timer);
+    this.dateNow = null;
   }
 
   calculateRemainingTime() {
