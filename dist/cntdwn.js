@@ -64,6 +64,7 @@ var Countdown = function (_Component) {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       clearInterval(this.timer);
+      this.dateNow = null;
     }
   }, {
     key: 'calculateRemainingTime',
