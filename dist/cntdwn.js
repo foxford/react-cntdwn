@@ -67,7 +67,7 @@ var Countdown = function (_Component) {
   }, {
     key: 'calculateRemainingTime',
     value: function calculateRemainingTime() {
-      var currentDate = this.props.currentDate ? +this.props.currentDate + this.props.interval : null;
+      var currentDate = this.props.currentDate ? new Date(+this.props.currentDate + this.props.interval) : null;
       var now = currentDate || (0, _moment2.default)().toDate();
       return (0, _moment2.default)(this.props.targetDate).diff((0, _moment2.default)(now));
     }

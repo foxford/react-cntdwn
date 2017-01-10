@@ -31,7 +31,7 @@ export default class Countdown extends Component {
   }
 
   calculateRemainingTime() {
-    const currentDate = (this.props.currentDate) ? +this.props.currentDate + this.props.interval : null;
+    const currentDate = (this.props.currentDate) ? new Date(+this.props.currentDate + this.props.interval) : null;
     const now = currentDate || moment().toDate();
     return moment(this.props.targetDate).diff(moment(now));
   }
