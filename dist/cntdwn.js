@@ -67,7 +67,7 @@ var Countdown = function (_Component) {
   }, {
     key: 'calculateRemainingTime',
     value: function calculateRemainingTime() {
-      var now = this.props.currentDate || (0, _moment2.default)().toDate();
+      var now = (0, _moment2.default)().toDate();
       return (0, _moment2.default)(this.props.targetDate).diff((0, _moment2.default)(now));
     }
   }, {
@@ -180,7 +180,6 @@ exports.default = Countdown;
 
 
 Countdown.propTypes = {
-  currentDate: _react.PropTypes.instanceOf(Date),
   targetDate: _react.PropTypes.instanceOf(Date).isRequired,
   interval: _react.PropTypes.number,
   startDelay: _react.PropTypes.number,
