@@ -51,6 +51,7 @@ var Countdown = function (_Component) {
       var _this2 = this;
 
       setTimeout(function () {
+        _this2.dateNow = _this2.props.currentDate;
         _this2.tick();
         _this2.setState({ status: STARTED });
 
@@ -67,8 +68,7 @@ var Countdown = function (_Component) {
   }, {
     key: 'calculateRemainingTime',
     value: function calculateRemainingTime() {
-      var currentDate = this.props.currentDate ? new Date(+this.props.currentDate + this.props.interval) : null;
-      var now = currentDate || (0, _moment2.default)().toDate();
+      var now = this.dateNow || (0, _moment2.default)().toDate();
       return (0, _moment2.default)(this.props.targetDate).diff((0, _moment2.default)(now));
     }
   }, {
@@ -82,6 +82,7 @@ var Countdown = function (_Component) {
   }, {
     key: 'tick',
     value: function tick() {
+      if (this.dateNow) this.dateNow = new Date(+this.dateNow + this.props.interval);
       this.setState({ remainingTime: this.calculateRemainingTime() });
 
       if (this.state.remainingTime <= 0) {

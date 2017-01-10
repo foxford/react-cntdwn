@@ -17,6 +17,7 @@ export default class Countdown extends Component {
 
   componentDidMount() {
     setTimeout(() => {
+      this.dateNow = this.props.currentDate;
       this.tick();
       this.setState({status: STARTED});
 
@@ -31,8 +32,7 @@ export default class Countdown extends Component {
   }
 
   calculateRemainingTime() {
-    const currentDate = (this.props.currentDate) ? new Date(+this.props.currentDate + this.props.interval) : null;
-    const now = currentDate || moment().toDate();
+    const now = this.dateNow || moment().toDate();
     return moment(this.props.targetDate).diff(moment(now));
   }
 
@@ -44,6 +44,8 @@ export default class Countdown extends Component {
   }
 
   tick() {
+    if (this.dateNow)
+      this.dateNow = new Date(+this.dateNow + this.props.interval);
     this.setState({remainingTime: this.calculateRemainingTime()});
 
     if (this.state.remainingTime <= 0) {
